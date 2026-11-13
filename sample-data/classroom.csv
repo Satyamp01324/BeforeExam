@@ -1,0 +1,121 @@
+student_id,student_name,subject,kind,assessment_id,assessment_name,date,score,max_score,status,topic
+CE-101,Aarav Mehta,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,82,100,graded,
+CE-101,Aarav Mehta,Database Management Systems,internal,int-1,Internal 1,2026-11-03,13,25,graded,
+CE-101,Aarav Mehta,Database Management Systems,assignment,a-1,Relational model,2026-11-02,17,20,graded,
+CE-101,Aarav Mehta,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,12,20,graded,
+CE-101,Aarav Mehta,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,7,20,graded,SQL Joins
+CE-102,Riya Shah,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,82,100,graded,
+CE-102,Riya Shah,Database Management Systems,internal,int-1,Internal 1,2026-11-03,13,25,graded,
+CE-102,Riya Shah,Database Management Systems,assignment,a-1,Relational model,2026-11-02,11,20,graded,
+CE-102,Riya Shah,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,12,20,graded,
+CE-102,Riya Shah,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,13,20,graded,SQL Joins
+CE-103,Kabir Rao,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,65,100,graded,
+CE-103,Kabir Rao,Database Management Systems,internal,int-1,Internal 1,2026-11-03,18,25,graded,
+CE-103,Kabir Rao,Database Management Systems,assignment,a-1,Relational model,2026-11-02,14,20,graded,
+CE-103,Kabir Rao,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,15,20,graded,
+CE-103,Kabir Rao,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,16,20,graded,SQL Joins
+CE-104,Meera Joshi,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,83,100,graded,
+CE-104,Meera Joshi,Database Management Systems,internal,int-1,Internal 1,2026-11-03,,25,pending,
+CE-104,Meera Joshi,Database Management Systems,assignment,a-1,Relational model,2026-11-02,,20,pending,
+CE-104,Meera Joshi,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,,20,pending,
+CE-104,Meera Joshi,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,,20,pending,SQL Joins
+CE-105,Ananya Patil,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,84,100,graded,
+CE-105,Ananya Patil,Database Management Systems,internal,int-1,Internal 1,2026-11-03,10,25,graded,
+CE-105,Ananya Patil,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-105,Ananya Patil,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,11,20,graded,
+CE-105,Ananya Patil,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,8,20,graded,SQL Joins
+CE-106,Ishaan Verma,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,85,100,graded,
+CE-106,Ishaan Verma,Database Management Systems,internal,int-1,Internal 1,2026-11-03,10,25,graded,
+CE-106,Ishaan Verma,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-106,Ishaan Verma,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,11,20,graded,
+CE-106,Ishaan Verma,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,9,20,graded,SQL Joins
+CE-107,Sara Khan,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,86,100,graded,
+CE-107,Sara Khan,Database Management Systems,internal,int-1,Internal 1,2026-11-03,10,25,graded,
+CE-107,Sara Khan,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-107,Sara Khan,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,11,20,graded,
+CE-107,Sara Khan,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,8,20,graded,SQL Joins
+CE-108,Dev Kulkarni,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,87,100,graded,
+CE-108,Dev Kulkarni,Database Management Systems,internal,int-1,Internal 1,2026-11-03,10,25,graded,
+CE-108,Dev Kulkarni,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-108,Dev Kulkarni,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,11,20,graded,
+CE-108,Dev Kulkarni,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,9,20,graded,SQL Joins
+CE-109,Vihaan Desai,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,88,100,graded,
+CE-109,Vihaan Desai,Database Management Systems,internal,int-1,Internal 1,2026-11-03,10,25,graded,
+CE-109,Vihaan Desai,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-109,Vihaan Desai,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,11,20,graded,
+CE-109,Vihaan Desai,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,8,20,graded,SQL Joins
+CE-110,Nisha More,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,89,100,graded,
+CE-110,Nisha More,Database Management Systems,internal,int-1,Internal 1,2026-11-03,17,25,graded,
+CE-110,Nisha More,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-110,Nisha More,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,17,20,graded,
+CE-110,Nisha More,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,17,20,graded,SQL Joins
+CE-111,Aditya Jain,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,90,100,graded,
+CE-111,Aditya Jain,Database Management Systems,internal,int-1,Internal 1,2026-11-03,18,25,graded,
+CE-111,Aditya Jain,Database Management Systems,assignment,a-1,Relational model,2026-11-02,16,20,graded,
+CE-111,Aditya Jain,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,13,20,graded,
+CE-111,Aditya Jain,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,18,20,graded,SQL Joins
+CE-112,Priya Naik,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,91,100,graded,
+CE-112,Priya Naik,Database Management Systems,internal,int-1,Internal 1,2026-11-03,19,25,graded,
+CE-112,Priya Naik,Database Management Systems,assignment,a-1,Relational model,2026-11-02,17,20,graded,
+CE-112,Priya Naik,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,14,20,graded,
+CE-112,Priya Naik,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,19,20,graded,SQL Joins
+CE-113,Rohan Singh,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,92,100,graded,
+CE-113,Rohan Singh,Database Management Systems,internal,int-1,Internal 1,2026-11-03,20,25,graded,
+CE-113,Rohan Singh,Database Management Systems,assignment,a-1,Relational model,2026-11-02,12,20,graded,
+CE-113,Rohan Singh,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,15,20,graded,
+CE-113,Rohan Singh,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,14,20,graded,SQL Joins
+CE-114,Aisha Sheikh,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,93,100,graded,
+CE-114,Aisha Sheikh,Database Management Systems,internal,int-1,Internal 1,2026-11-03,21,25,graded,
+CE-114,Aisha Sheikh,Database Management Systems,assignment,a-1,Relational model,2026-11-02,13,20,graded,
+CE-114,Aisha Sheikh,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,16,20,graded,
+CE-114,Aisha Sheikh,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,15,20,graded,SQL Joins
+CE-115,Neil Fernandes,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,94,100,graded,
+CE-115,Neil Fernandes,Database Management Systems,internal,int-1,Internal 1,2026-11-03,22,25,graded,
+CE-115,Neil Fernandes,Database Management Systems,assignment,a-1,Relational model,2026-11-02,14,20,graded,
+CE-115,Neil Fernandes,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,17,20,graded,
+CE-115,Neil Fernandes,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,16,20,graded,SQL Joins
+CE-116,Tanvi Ghosh,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,95,100,graded,
+CE-116,Tanvi Ghosh,Database Management Systems,internal,int-1,Internal 1,2026-11-03,23,25,graded,
+CE-116,Tanvi Ghosh,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-116,Tanvi Ghosh,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,13,20,graded,
+CE-116,Tanvi Ghosh,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,17,20,graded,SQL Joins
+CE-117,Om Chavan,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,96,100,graded,
+CE-117,Om Chavan,Database Management Systems,internal,int-1,Internal 1,2026-11-03,16,25,graded,
+CE-117,Om Chavan,Database Management Systems,assignment,a-1,Relational model,2026-11-02,16,20,graded,
+CE-117,Om Chavan,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,14,20,graded,
+CE-117,Om Chavan,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,18,20,graded,SQL Joins
+CE-118,Zoya Khan,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,80,100,graded,
+CE-118,Zoya Khan,Database Management Systems,internal,int-1,Internal 1,2026-11-03,17,25,graded,
+CE-118,Zoya Khan,Database Management Systems,assignment,a-1,Relational model,2026-11-02,17,20,graded,
+CE-118,Zoya Khan,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,15,20,graded,
+CE-118,Zoya Khan,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,19,20,graded,SQL Joins
+CE-119,Parth Joshi,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,81,100,graded,
+CE-119,Parth Joshi,Database Management Systems,internal,int-1,Internal 1,2026-11-03,18,25,graded,
+CE-119,Parth Joshi,Database Management Systems,assignment,a-1,Relational model,2026-11-02,12,20,graded,
+CE-119,Parth Joshi,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,16,20,graded,
+CE-119,Parth Joshi,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,14,20,graded,SQL Joins
+CE-120,Diya Menon,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,82,100,graded,
+CE-120,Diya Menon,Database Management Systems,internal,int-1,Internal 1,2026-11-03,19,25,graded,
+CE-120,Diya Menon,Database Management Systems,assignment,a-1,Relational model,2026-11-02,13,20,graded,
+CE-120,Diya Menon,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,17,20,graded,
+CE-120,Diya Menon,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,15,20,graded,SQL Joins
+CE-121,Mihir Shah,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,83,100,graded,
+CE-121,Mihir Shah,Database Management Systems,internal,int-1,Internal 1,2026-11-03,20,25,graded,
+CE-121,Mihir Shah,Database Management Systems,assignment,a-1,Relational model,2026-11-02,14,20,graded,
+CE-121,Mihir Shah,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,13,20,graded,
+CE-121,Mihir Shah,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,16,20,graded,SQL Joins
+CE-122,Ira Gupta,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,84,100,graded,
+CE-122,Ira Gupta,Database Management Systems,internal,int-1,Internal 1,2026-11-03,21,25,graded,
+CE-122,Ira Gupta,Database Management Systems,assignment,a-1,Relational model,2026-11-02,15,20,graded,
+CE-122,Ira Gupta,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,14,20,graded,
+CE-122,Ira Gupta,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,17,20,graded,SQL Joins
+CE-123,Jay Pawar,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,85,100,graded,
+CE-123,Jay Pawar,Database Management Systems,internal,int-1,Internal 1,2026-11-03,22,25,graded,
+CE-123,Jay Pawar,Database Management Systems,assignment,a-1,Relational model,2026-11-02,16,20,graded,
+CE-123,Jay Pawar,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,15,20,graded,
+CE-123,Jay Pawar,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,18,20,graded,SQL Joins
+CE-124,Neha Rao,Database Management Systems,attendance,att-1,Attendance to date,2026-11-13,86,100,graded,
+CE-124,Neha Rao,Database Management Systems,internal,int-1,Internal 1,2026-11-03,23,25,graded,
+CE-124,Neha Rao,Database Management Systems,assignment,a-1,Relational model,2026-11-02,17,20,graded,
+CE-124,Neha Rao,Database Management Systems,assignment,a-2,SQL filters,2026-11-06,16,20,graded,
+CE-124,Neha Rao,Database Management Systems,assignment,a-3,SQL Joins quiz,2026-11-12,19,20,graded,SQL Joins
