@@ -461,11 +461,11 @@ function Evaluation() {
   return <section className="panel padded">
     <div className="panel-heading flush">
       <div>
-        <h2>Multi-Model AI Benchmark &amp; Explainability</h2>
-        <p>Comparing temporal predictive algorithms against a fixed faculty alert budget (10 alerts).</p>
+        <h2>Random Forest Model Evaluation &amp; Explainability</h2>
+        <p>Evaluating the Random Forest predictive model against the baseline with a fixed faculty alert budget (10 alerts).</p>
       </div>
       <button className="button primary" disabled={busy} onClick={run}>
-        <Activity size={17}/>{busy ? 'Running benchmark…' : 'Run multi-model benchmark'}
+        <Activity size={17}/>{busy ? 'Running evaluation…' : 'Run Random Forest evaluation'}
       </button>
     </div>
 
@@ -519,9 +519,9 @@ function Evaluation() {
 
       {/* Feature Importance Section */}
       {result.feature_importances && <div style={{ borderTop: '1px solid var(--line)', paddingTop: '18px' }}>
-        <h2>AI Feature Importance &amp; Explainability</h2>
+        <h2>Random Forest Feature Importance &amp; Explainability</h2>
         <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '4px' }}>
-          Breakdown of how much weight the machine learning models assign to each academic dimension.
+          Breakdown of how much weight the Random Forest model assigns to each academic dimension.
         </p>
         <div className="feature-list">
           {result.feature_importances.map(item => <div key={item.key} className="feature-row">
@@ -593,7 +593,7 @@ function App() {
     Overview: 'Proactive early-warning workspace: detect academic risk, simulate interventions, and support students before exams.',
     Students: 'Review machine learning failure probabilities, evidence signals, and personalized guidance.',
     'Support plans': 'Track support groups, baseline performance, and follow-up internal gains.',
-    'Model evaluation': 'Benchmark machine learning models with temporal validation and feature explainability.'
+    'Model evaluation': 'Benchmark the Random Forest model with temporal validation and feature explainability.'
   }[page]
 
   return <div className="app-shell">

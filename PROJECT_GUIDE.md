@@ -79,7 +79,7 @@ flowchart TD
 
 ### Full Technical Stack:
 - **Backend**: FastAPI (Python 3.12), SQLAlchemy ORM, SQLite embedded database.
-- **Data Science & ML**: `scikit-learn` (Pipelines, LogisticRegression, RandomForest, HistGradientBoosting), `pandas`, `numpy`.
+- **Data Science & ML**: `scikit-learn` (RandomForestClassifier, Pipelines, Imputers), `pandas`, `numpy`.
 - **Frontend**: React 19, TypeScript, Vite, Tailwind CSS v4, Lucide Icons, Recharts.
 - **Architectural Pattern**: Decoupled RESTful API with static SPA single-port mounting for production distribution.
 
@@ -152,13 +152,11 @@ graph TD
 - **No Data Leakage Guarantee**:
   - Only assessments dated **strictly before** the target assessment date are used in feature engineering.
   - The model holds out the latest cohort entirely ($28$ validation students held out, trained on earlier $72$ historical cases).
-- **Multi-Model Benchmark Results**:
+- **Machine Learning Benchmark Results**:
   | Model | Budget (Flagged) | Caught (Recall) | Precision | Recall | F1 Score | ROC-AUC | Accuracy |
   | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
   | **Latest Internal Baseline** | 10 | 5 / 8 | 50.0% | 62.5% | 55.6% | 76.9% | 71.4% |
-  | **Logistic Regression (L2)** | 10 | **6 / 8** | **60.0%** | **75.0%** | **66.7%** | **86.9%** | **78.6%** |
   | **Random Forest (100 Trees)** | 10 | **6 / 8** | **60.0%** | **75.0%** | **66.7%** | **85.0%** | **78.6%** |
-  | **Gradient Boosting** | 10 | **6 / 8** | **60.0%** | **75.0%** | **66.7%** | **82.5%** | **78.6%** |
 
 ### 3. Feature Importance & Explainability (Gini / Weights)
 1. **Prior Internal Marks** ($48.3\%$): Strongest single predictor of examination preparedness.
@@ -247,13 +245,11 @@ You can copy this exact structure directly into PowerPoint or Google Slides:
   - Strict **Temporal Holdout**: Model is trained *only* on earlier histories ($72$ cases) and evaluated on a future unseen cohort ($28$ cases).
   - Delivers **7 days average advance warning lead time** ahead of major assessments.
 <!-- slide -->
-### SLIDE 7: Multi-Model Benchmark & Explainability
-- **Headline**: Proven Accuracy Across 4 Competing Algorithms
+### SLIDE 7: Random Forest Model & Explainability
+- **Headline**: Proven Accuracy Across 100 Decision Trees
 - **Performance Highlights**:
   - Baseline Internal: $76.9\%$ ROC-AUC ($5/8$ caught)
-  - **Logistic Regression**: **$86.9\%$ ROC-AUC** ($6/8$ caught, $66.7\%$ F1)
-  - **Random Forest**: **$85.0\%$ ROC-AUC** ($6/8$ caught)
-  - **Gradient Boosting**: **$82.5\%$ ROC-AUC** ($6/8$ caught)
+  - **Random Forest**: **$85.0\%$ ROC-AUC** ($6/8$ caught, $66.7\%$ F1, $78.6\%$ Accuracy)
 - **Feature Importance**: Internal Marks ($48.3\%$) $\rightarrow$ Assignment Avg ($25.1\%$) $\rightarrow$ Trend Drop ($14.6\%$) $\rightarrow$ Attendance ($12.0\%$).
 <!-- slide -->
 ### SLIDE 8: The Killer Feature — Intervention Impact Simulator
@@ -298,9 +294,9 @@ You can copy this exact structure directly into PowerPoint or Google Slides:
 
 When presenting in hackathons, judges often ask probing technical and operational questions. Here are the top questions and the exact winning answers:
 
-### Q1: "Why did you use Logistic Regression and Random Forest instead of Deep Learning (LSTM / Transformers)?"
+### Q1: "Why did you use Random Forest instead of Deep Learning (LSTM / Transformers)?"
 > **Answer**:  
-> *"In institutional educational governance, **explainability and data efficiency** are paramount. Real-world classrooms don't have 10 million rows; they have cohorts of 60 to 200 students. Deep learning on tabular academic records suffers from severe overfitting, high latency, and zero transparency. Our ensemble of Logistic Regression and Random Forest achieves an outstanding **86.9% ROC-AUC** while providing exact Gini feature importances that faculty can understand and defend in front of an academic board."*
+> *"In institutional educational governance, **explainability and data efficiency** are paramount. Real-world classrooms don't have 10 million rows; they have cohorts of 60 to 200 students. Deep learning on tabular academic records suffers from severe overfitting, high latency, and zero transparency. Our ensemble of 100 Random Forest decision trees achieves an outstanding **85.0% ROC-AUC** while providing exact Gini feature importances that faculty can understand and defend in front of an academic board."*
 
 ---
 

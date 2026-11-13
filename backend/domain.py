@@ -88,16 +88,15 @@ def summarize(rows, cutoff=None):
 
 
 def get_default_model():
-    """Lazily load and train the production early-warning risk model from historical training data."""
+    """Lazily load and train the production early-warning risk model using Random Forest."""
     global _MODEL_CACHE
     if _MODEL_CACHE is not None:
         return _MODEL_CACHE
     from pathlib import Path
     import pandas as pd
+    from sklearn.ensemble import RandomForestClassifier
     from sklearn.impute import SimpleImputer
-    from sklearn.linear_model import LogisticRegression
     from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import StandardScaler
 
     eval_file = Path(__file__).resolve().parents[1] / "sample-data/evaluation.csv"
     if eval_file.is_file():
@@ -121,8 +120,8 @@ def get_default_model():
                                          **{f: snapshot[f] for f in ("attendance", "internal", "average", "trend")}))
             if len(examples) >= 10:
                 fields = ["attendance", "internal", "average", "trend"]
-                pipeline = make_pipeline(SimpleImputer(strategy="median"), StandardScaler(),
-                                         LogisticRegression(max_iter=1000, random_state=42))
+                pipeline = make_pipeline(SimpleImputer(strategy="median"),
+                                         RandomForestClassifier(n_estimators=100, max_depth=4, random_state=42))
                 pipeline.fit(pd.DataFrame(examples)[fields], [r["label"] for r in examples])
                 _MODEL_CACHE = pipeline
                 return _MODEL_CACHE
@@ -132,7 +131,7 @@ def get_default_model():
 
 
 def predict_risk(attendance, internal, average, trend):
-    """Predict risk probability (0-100) of performing below 50% in the upcoming assessment."""
+    """Predict risk probability (0-100) of performing below 50% using the Random Forest model."""
     model = get_default_model()
     if model is not None:
         try:
@@ -230,14 +229,12 @@ def dashboard(records):
 
 
 def evaluate(records, budget):
-    """Predict a later internal from dated features. Hold out the newest assessment date."""
+    """Predict a later internal from dated features using Random Forest. Hold out the newest assessment date."""
     import pandas as pd
-    from sklearn.ensemble import RandomForestClassifier, HistGradientBoostingClassifier
+    from sklearn.ensemble import RandomForestClassifier
     from sklearn.impute import SimpleImputer
-    from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import accuracy_score, roc_auc_score
     from sklearn.pipeline import make_pipeline
-    from sklearn.preprocessing import StandardScaler
 
     grouped = defaultdict(list)
     for row in records:
@@ -277,26 +274,12 @@ def evaluate(records, budget):
     # 1. Baseline: order by previous internal ascending
     baseline_order = sorted(range(len(test)), key=lambda i: test[i]["internal"])
 
-    # 2. Logistic Regression
-    lr = make_pipeline(SimpleImputer(strategy="median", add_indicator=True), StandardScaler(),
-                       LogisticRegression(max_iter=1000, random_state=42))
-    lr.fit(X_train, y_train)
-    lr_probs = lr.predict_proba(X_test)[:, 1]
-    lr_order = sorted(range(len(test)), key=lambda i: -lr_probs[i])
-
-    # 3. Random Forest
+    # 2. Random Forest Model
     rf = make_pipeline(SimpleImputer(strategy="median"),
                        RandomForestClassifier(n_estimators=100, max_depth=4, random_state=42))
     rf.fit(X_train, y_train)
     rf_probs = rf.predict_proba(X_test)[:, 1]
     rf_order = sorted(range(len(test)), key=lambda i: -rf_probs[i])
-
-    # 4. Gradient Boosting
-    gb = make_pipeline(SimpleImputer(strategy="median"),
-                       HistGradientBoostingClassifier(max_iter=50, random_state=42))
-    gb.fit(X_train, y_train)
-    gb_probs = gb.predict_proba(X_test)[:, 1]
-    gb_order = sorted(range(len(test)), key=lambda i: -gb_probs[i])
 
     def compute_metrics(name, order, probs=None):
         hits = sum(test[index]["label"] for index in order[:count])
@@ -340,9 +323,7 @@ def evaluate(records, budget):
         lead_days=round(mean(row["lead_days"] for row in test), 1),
         methods=[
             compute_metrics("Latest internal baseline", baseline_order),
-            compute_metrics("Logistic regression", lr_order, lr_probs),
             compute_metrics("Random forest", rf_order, rf_probs),
-            compute_metrics("Gradient boosting", gb_order, gb_probs),
         ],
         feature_importances=feature_importances,
     )
