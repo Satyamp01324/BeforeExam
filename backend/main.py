@@ -3,16 +3,18 @@ from contextlib import asynccontextmanager
 from datetime import date
 from pathlib import Path
 import csv
+import io
 import os
 
 from fastapi import FastAPI, HTTPException, Request
+from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from sqlalchemy import JSON, Column, String, create_engine, select
 from sqlalchemy.dialects.sqlite import insert
 from sqlalchemy.orm import DeclarativeBase, Session
 
-from .domain import FIELDS, dashboard, evaluate, read_csv
+from .domain import FIELDS, dashboard, evaluate, predict_risk, read_csv
 
 ROOT = Path(__file__).resolve().parents[1]
 DATABASE = os.environ.get("BEFOREEXAM_DB", str(ROOT / "beforeexam.sqlite3"))
@@ -87,6 +89,56 @@ async def import_data(request: Request):
     return {"imported": len(rows)}
 
 
+class SimulationInput(BaseModel):
+    attendance: float = Field(ge=0, le=100)
+    internal: float = Field(ge=0, le=100)
+    average: float = Field(ge=0, le=100)
+    trend: float = Field(ge=-100, le=100, default=0.0)
+
+
+@app.post("/api/simulate")
+def run_simulation(sim: SimulationInput):
+    ml_risk = predict_risk(sim.attendance, sim.internal, sim.average, sim.trend)
+    heuristic_risk = round(max(0, min(100, (100 - sim.attendance) * 0.35 + (100 - sim.internal) * 0.35 + (100 - sim.average) * 0.30)))
+    band = "High Risk" if ml_risk >= 65 else "Moderate Risk" if ml_risk >= 35 else "Low Risk"
+    return {
+        "ml_risk": ml_risk,
+        "heuristic_risk": heuristic_risk,
+        "band": band,
+    }
+
+
+@app.get("/api/export")
+def export_report():
+    with Session(engine) as db:
+        dash = dashboard(records(db))
+
+    output = io.StringIO()
+    writer = csv.writer(output)
+    writer.writerow([
+        "Student ID", "Name", "Subject", "Priority Status", "ML Failure Risk %",
+        "Risk Band", "Attendance %", "Latest Internal %", "Assignment Average %",
+        "Score Trend", "Review Signals", "Smart Recommendation"
+    ])
+    for s in dash["students"]:
+        writer.writerow([
+            s["id"], s["name"], s["subject"], s["priority"],
+            s["ml_risk"] if s.get("ml_risk") is not None else "N/A",
+            s.get("ml_band", "N/A"),
+            s["attendance"] if s["attendance"] is not None else "N/A",
+            s["internal"] if s["internal"] is not None else "N/A",
+            s["average"] if s["average"] is not None else "N/A",
+            f"{s['trend']:+g}%" if s["trend"] is not None else "N/A",
+            "; ".join(s["signals"]) if s["signals"] else "None",
+            s.get("recommendation", "")
+        ])
+    return Response(
+        content=output.getvalue(),
+        media_type="text/csv",
+        headers={"Content-Disposition": "attachment; filename=beforeexam-faculty-report.csv"}
+    )
+
+
 class PlanInput(BaseModel):
     subject: str = Field(min_length=1, max_length=100)
     title: str = Field(min_length=1, max_length=120)
@@ -117,7 +169,7 @@ def create_plan(plan: PlanInput):
         payload = {**plan.model_dump(mode="json"), "id": plan_id, "title": title, "status": "Scheduled",
                    "baseline": {member: {"internal": students[member]["internal"],
                                          "cutoff": max(row["date"] for row in students[member]["records"])}
-                                for member in plan.members}}
+                                 for member in plan.members}}
         db.add(Plan(id=plan_id, payload=payload))
         db.commit()
         return payload

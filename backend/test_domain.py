@@ -19,6 +19,13 @@ class AcademicWorkflowTests(unittest.TestCase):
         self.assertLess(students["CE-101"]["trend"], 0)
         self.assertGreater(students["CE-102"]["trend"], 0)
         self.assertEqual(students["CE-104"]["priority"], "Data pending")
+        # ML risk and recommendations
+        self.assertIn("ml_risk", students["CE-101"])
+        self.assertIsNotNone(students["CE-101"]["ml_risk"])
+        self.assertGreater(students["CE-101"]["ml_risk"], students["CE-102"]["ml_risk"])
+        self.assertIn("recommendation", students["CE-101"])
+        self.assertIn("class_summary", result)
+        self.assertEqual(result["class_summary"]["total"], 24)
 
     def test_graded_zero_is_distinct_from_pending(self):
         content = io.StringIO()
@@ -33,7 +40,16 @@ class AcademicWorkflowTests(unittest.TestCase):
     def test_equal_budget_and_temporal_holdout(self):
         result = evaluate(read_csv((SAMPLES / "evaluation.csv").read_text()), budget=10)
         self.assertEqual((result["train"], result["test"], result["lead_days"]), (72, 28, 7))
+        self.assertEqual(len(result["methods"]), 4)
+        self.assertEqual([m["name"] for m in result["methods"]],
+                         ["Latest internal baseline", "Logistic regression", "Random forest", "Gradient boosting"])
         for method in result["methods"]:
             self.assertEqual(method["flagged"], 10)
             self.assertEqual(method["extra"] + method["caught"], 10)
             self.assertEqual(method["missed"] + method["caught"], result["positives"])
+            self.assertIn("precision", method)
+            self.assertIn("recall", method)
+            self.assertIn("f1", method)
+            self.assertIn("roc_auc", method)
+        self.assertIn("feature_importances", result)
+        self.assertEqual(len(result["feature_importances"]), 4)
